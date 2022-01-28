@@ -4,8 +4,8 @@
     </head>
     <body>
         <div id="content">
-            <x-CalcTag>
-            </x-CalcTag>
+            <x-calctag>
+            </x-calctag>
         </div>
         <script>
             class calcTag extends HTMLElement {
@@ -16,6 +16,7 @@
                 }
 
                 createdCallback() {
+                    console.log("start Callback")
                     this.dataProp = "Hi";
 
                     this.addEventListener('click', () => {
@@ -43,6 +44,6 @@
             }
 
             //document.registerElement("x-CalcTag",calcTag);
-            window.customElements.define("x-CalcTag", calcTag);</script>
+            window.customElements.define('x-calctag', calcTag);</script>
     </body>
 </html> 
