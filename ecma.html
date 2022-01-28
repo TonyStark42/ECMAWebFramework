@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>ECMA standard</title>
+	</head>
+	<body>
+		<div id="content">
+			<x-CalcTag>
+				
+			</x-CalcTag>
+
+		</div>
+		<script >
+
+
+
+			class calcTag extends HTMLElement{
+
+				constructor(){
+					super();
+					this._dataProp = "";
+				}
+
+				createdCallback() 
+				{
+					this.dataProp = "Hi";
+				
+					this.addEventListener('click',() => {
+						this.dataProp = "Bye";
+						console.log("set Bye")
+					});
+				};
+
+				attributeChangedCallback(name,old,newval)
+				{
+					this.dataProp = newval;
+					//let sroot = this.createShadowRoot();
+					this.innerHTML = "<b>"+this.dataProp+"</b>";
+					console.log("Att Change")
+				};
+
+				get dataProp(){
+					return this.getAttribute("dataProp");
+				}
+
+				set dataProp(value){
+					this.setAttribute("dataProp", value);
+					//this._dataProp = value;
+				}
+
+			}
+
+			//document.registerElement("x-CalcTag",calcTag);
+			window.customElements.define("x-CalcTag",calcTag);
+
+
+		</script>
+	</body>
+</html> 
